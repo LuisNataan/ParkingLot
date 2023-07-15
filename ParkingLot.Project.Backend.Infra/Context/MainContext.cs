@@ -9,7 +9,6 @@ namespace ParkingLot.Project.Backend.Infra.Context
 
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<PriceTable> PriceTables { get; set; }
-        public DbSet<EntryRecord> EntryRecords { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
