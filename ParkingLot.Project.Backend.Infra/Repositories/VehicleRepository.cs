@@ -1,4 +1,5 @@
-﻿using ParkingLot.Project.Backend.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ParkingLot.Project.Backend.Domain.Entities;
 using ParkingLot.Project.Backend.Domain.Interfaces;
 using ParkingLot.Project.Backend.Infra.Context;
 using ParkingLot.Project.Backend.Infra.Repositories.GenericRepository;
@@ -11,14 +12,17 @@ namespace ParkingLot.Project.Backend.Infra.Repositories
         {
         }
 
-        public Task<Vehicle> AddVehicle(string plate)
+        public async Task<Vehicle> AddVehicle(string plate)
         {
-            throw new NotImplementedException();
+            var vehicle = new Vehicle(plate);
+            await _dbSet.AddAsync(vehicle);
+            await _context.SaveChangesAsync();
+            return vehicle;
         }
 
-        public Task<Vehicle> GetVehicleByPlate(string plate)
+        public async Task<Vehicle> GetVehicleByPlate(string plate)
         {
-            throw new NotImplementedException();
+            return await _dbSet.FirstOrDefaultAsync(v => v.Plate == plate);
         }
     }
 }
