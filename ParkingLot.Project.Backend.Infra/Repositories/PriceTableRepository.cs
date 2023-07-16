@@ -13,5 +13,10 @@ namespace ParkingLot.Project.Backend.Infra.Repositories
         }
 
         public async Task<PriceTable> GetPriceTableByDate(DateTime date) => await _dbSet.FirstOrDefaultAsync(pt => pt.EntryTime <= date && pt.ExitTime >= date);
+
+        public async Task<List<PriceTable>> GetAllPriceTables()
+        {
+            return await _context.PriceTables.ToListAsync();
+        }
     }
 }
