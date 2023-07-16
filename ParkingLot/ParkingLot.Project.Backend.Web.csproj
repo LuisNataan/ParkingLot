@@ -27,4 +27,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ParkingLot.Project.Backend.Application\ParkingLot.Project.Backend.Application.csproj" />
+    <ProjectReference Include="..\ParkingLot.Project.Backend.Infra\ParkingLot.Project.Backend.Infra.csproj" />
+  </ItemGroup>
+
 </Project>
