@@ -2,17 +2,15 @@
 {
     public class PriceTable : BaseEntity
     {
-        public double Price { get; set; }
-        public double TotalPrice { get; set; }
-        public double ChargedPrice { get; set; }
+        public decimal Price { get; set; }
+        public decimal AdditionalPrice { get; set; }
         public DateTime EntryTime { get; set; }
         public DateTime ExitTime { get; set; }
 
-        public PriceTable(double price, double totalPrice, double chargedPrice, DateTime entryTime, DateTime exitTime)
+        public PriceTable(decimal price, decimal chargedPrice, DateTime entryTime, DateTime exitTime)
         {
             Price = price;
-            TotalPrice = totalPrice;
-            ChargedPrice = chargedPrice;
+            AdditionalPrice = chargedPrice;
             EntryTime = entryTime;
             ExitTime = exitTime;
         }

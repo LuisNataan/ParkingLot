@@ -13,7 +13,7 @@ namespace ParkingLot.Project.Backend.Infra.Mappings
             builder.Property(x => x.Price)
                    .IsRequired();
 
-            builder.Property(x => x.ChargedPrice)
+            builder.Property(x => x.AdditionalPrice)
                    .IsRequired();
 
             builder.Property(x => x.TotalPrice)
