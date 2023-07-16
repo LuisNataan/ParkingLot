@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ParkingLot.Project.Backend.Domain.Entities;
+using ParkingLot.Project.Backend.Infra.Mappings;
 
 namespace ParkingLot.Project.Backend.Infra.Context
 {
@@ -12,6 +13,13 @@ namespace ParkingLot.Project.Backend.Infra.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Vehicle>();
+            modelBuilder.Entity<PriceTable>();
+
+            modelBuilder.ApplyConfiguration(new VehicleMappingConfiguration());
+            modelBuilder.ApplyConfiguration(new PriceTableMappingConfiguration());
+
+
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 entityType.GetForeignKeys()
