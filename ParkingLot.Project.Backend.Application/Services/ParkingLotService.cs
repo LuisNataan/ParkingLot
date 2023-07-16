@@ -1,9 +1,10 @@
-﻿using ParkingLot.Project.Backend.Domain.Entities;
+﻿using ParkingLot.Project.Backend.Application.Interfaces;
+using ParkingLot.Project.Backend.Domain.Entities;
 using ParkingLot.Project.Backend.Infra.Repositories;
 
 namespace ParkingLot.Project.Backend.Application.Services
 {
-    public class ParkingLotService
+    public class ParkingLotService : IParkingLotService
     {
         private readonly VehicleRepository _vehicleRepository;
         private readonly PriceTableRepository _priceTableRepository;
@@ -14,7 +15,7 @@ namespace ParkingLot.Project.Backend.Application.Services
             this._priceTableRepository = priceTableRepository;
         }
 
-        public async Task<decimal> CalculateChargedPrice(string plate, DateTime entryTime, DateTime exitTime) 
+        public async Task<decimal> CalculateChargedPrice(string plate, DateTime entryTime, DateTime exitTime)
         {
             Vehicle vehicle = await _vehicleRepository.GetVehicleByPlate(plate);
             PriceTable priceTable = await _priceTableRepository.GetPriceTableByDate(entryTime);
@@ -23,7 +24,7 @@ namespace ParkingLot.Project.Backend.Application.Services
 
             if (duration.TotalMinutes <= 30)
             {
-                return priceTable.Price / 2;    
+                return priceTable.Price / 2;
             }
 
             decimal chargedValue = priceTable.Price;
