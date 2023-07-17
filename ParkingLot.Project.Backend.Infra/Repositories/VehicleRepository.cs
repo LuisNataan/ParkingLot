@@ -24,5 +24,7 @@ namespace ParkingLot.Project.Backend.Infra.Repositories
         {
             return await _dbSet.FirstOrDefaultAsync(v => v.Plate == plate);
         }
+
+        public async Task<List<Vehicle>> GetAllVehicles() { return await _dbSet.ToListAsync(); }
     }
 }
